@@ -3,8 +3,13 @@ import { DefaultTheme } from 'styled-components';
 
 export const lightTheme: DefaultTheme = {
   color: {
-    main: "black",
-    sub: "white"
+    primary: "black",
+    secondary: "rgb(255, 48, 66)",
+
+    text1: "#ffffff",
+    text2: "#ffffff",
+    backgorund: "black",
+    foreground: "white",
   }
 }
 
