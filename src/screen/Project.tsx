@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import { JQBadge, JSBadge, ReactBadge } from '../components/Badges'
 import Article from '../components/Project/Article'
 

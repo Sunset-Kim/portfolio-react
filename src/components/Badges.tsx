@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { StyledComponent, StyledComponentBase, StyledComponentProps, StyledProps } from "styled-components";
+import styled from "styled-components";
 interface Container {
   bgColor: string
   textColor: string
@@ -20,14 +20,25 @@ interface BasicBadgeProps {
   name: string
   bgColor: string
   textColor: string
+  key?: any
 }
 
-const BasicBadge: React.FC<BasicBadgeProps> = ({ name, bgColor, textColor }) => {
-  return (
-    <BadgeContainer bgColor={bgColor} textColor={textColor}>
-      {name}
-    </BadgeContainer>
-  )
+const BasicBadge: React.FC<BasicBadgeProps> = ({ name, bgColor, textColor, key = undefined }) => {
+  if (key) {
+    return (
+      <BadgeContainer key={key} bgColor={bgColor} textColor={textColor}>
+        {name}
+      </BadgeContainer>
+    )
+  } else {
+    return (
+
+      <BadgeContainer bgColor={bgColor} textColor={textColor}>
+        {name}
+      </BadgeContainer>
+    )
+  }
+
 }
 
 const ReactBadge = () => {
