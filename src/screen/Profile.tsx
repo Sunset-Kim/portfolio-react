@@ -39,7 +39,6 @@ const SkillContainer = styled.div``;
 
 
 const Profile = () => {
-
   return (
     <>
       <Title>
