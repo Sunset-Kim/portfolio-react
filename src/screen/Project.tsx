@@ -1,13 +1,23 @@
-import React from 'react'
-import { JQBadge, JSBadge, ReactBadge } from '../components/Badges'
+import React, { useState, useEffect } from 'react'
 import Article from '../components/Project/Article'
+import projectData, { keyword } from '../data/projectData';
 
 
 const Project = () => {
   return (
     <>
-      <Article title="프로젝트 이름" desc="프로젝트 설명" badge={[ReactBadge, JSBadge]} img="/images/profile_img.jpg" />
-      <Article title="프로젝트 이름2" desc="프로젝트 설명2" badge={[ReactBadge, JQBadge]} img="/images/profile_img.jpg" direction="left" />
+      {
+        projectData.sort((a, b) => b.id - a.id).map((item, index) => {
+          
+          return (
+            <Article
+              key={item.id}
+              {...item}
+            />
+          )
+        })
+      }
+
     </>
   )
 }
