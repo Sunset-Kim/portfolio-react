@@ -11,17 +11,9 @@ import BodyContainer from '../components/BodyContainer';
 import Profile from './Profile';
 import ToyProject from './ToyProject';
 import Project from './Project';
+import TabContainer from '../components/TabContainer';
 
-const Header = styled.div`
-
-`;
-
-const HeaderTabContainer = styled.div`
-height: 50px;
-width: 640px;
-margin: 0 auto;
-background-color: red;
-`;
+const Header = styled.div``;
 
 const HeaderSlide = styled(Swiper)`
   position: relative;
@@ -55,38 +47,30 @@ const HeaderSlide = styled(Swiper)`
     width: 60px;
   }
 `;
-
 const HomeHeader = styled.div`
 margin: 0 60px;
-
-span {
-  display: inline-block;
-  padding: 24px 0;
-  font-size: 16px;
-}
-
+  span {
+    display: inline-block;
+    padding: 24px 0;
+    font-size: 16px;
+  }
 `;
-
 const Body = styled(Swiper)`
-background: black;
-
-.swiper-slide {
-  padding: 5px 10px;
-  color: white;
-  
-}
-
+  background: black;
+  .swiper-slide {
+    padding: 5px 10px;
+    color: white;
+  }
 `;
 
 const Home = ({ ...props }) => {
   const { pathname } = useLocation();
-
+  const [currentTab, setCurrentTab] = useState(0);
   const [headerSwiper, setHeaderSwiper] = useState<SwiperCore>();
   const [bodySwiper, setBodySwiper] = useState<SwiperCore>();
   const navigate = useNavigate();
 
   const changeTabIndex = () => {
-
     switch (pathname) {
       case '/':
         return 0;
@@ -97,13 +81,7 @@ const Home = ({ ...props }) => {
       default:
         return 0;
     }
-
   }
-
-  useEffect(() => {
-
-  }, [])
-
   const onSlideChange = ({ realIndex }: any) => {
     switch (realIndex) {
       case 0:
@@ -119,7 +97,6 @@ const Home = ({ ...props }) => {
         break;
     }
   }
-
   const onClick: ReactEventHandler = (e) => {
     let index: number | undefined;
     headerSwiper?.slides.filter((item, itemIndex) => {
@@ -144,12 +121,12 @@ const Home = ({ ...props }) => {
           modules={[Controller]}
           onSwiper={setHeaderSwiper}
           controller={{ control: bodySwiper }}
-          slidesPerView={'auto'}
+          slidesPerView={3}
           onSlideChange={onSlideChange}
           watchSlidesProgress={true}
           centeredSlides={true}
           threshold={10}
-          loop={true}
+        // loop={true}
         >
           <SwiperSlide onClick={onClick}>
             <HomeHeader>
@@ -176,10 +153,6 @@ const Home = ({ ...props }) => {
 
           </SwiperSlide >
         </HeaderSlide >
-        {
-          (pathname === '/project' || pathname === '/toy') &&
-          <HeaderTabContainer />
-        }
       </Header>
 
       <Body
@@ -189,7 +162,7 @@ const Home = ({ ...props }) => {
         slidesPerView={'auto'}
         watchSlidesProgress={true}
         centeredSlides={true}
-        loop={true}
+      // loop={true}
       >
         <SwiperSlide>
           <BodyContainer>
