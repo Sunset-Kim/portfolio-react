@@ -6,10 +6,11 @@ ${normalize};
 
 * {
   box-sizing: border-box;
+  
 }
 
 html,body {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Sans KR', 'Roboto', sans-serif;
   background: ${props => props.theme.color.backgorund};
   color: ${props => props.theme.color.text1};
 }
