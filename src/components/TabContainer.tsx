@@ -10,7 +10,7 @@ const PrimaryButton = css`
   color: ${props => props.theme.color.backgorund};
 
   &.active {
-    background-color: ${props => props.theme.color.secondary};
+    background-color: ${props => props.theme.color.primary};
   }
 `
 

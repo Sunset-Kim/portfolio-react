@@ -18,7 +18,7 @@ const Link = styled.a<{size?:number}>`
 
   &:hover {
     color: ${props => props.theme.color.foreground};
-    background: ${props => props.theme.color.secondary};
+    background: ${props => props.theme.color.primary};
   }
 
   &:last-child {
