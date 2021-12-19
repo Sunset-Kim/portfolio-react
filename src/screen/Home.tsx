@@ -34,21 +34,45 @@ const HeaderSlide = styled(Swiper)`
     width: auto;
     text-align: center;
     opacity: 0.6;
-  }
-  .swiper-slide-active {
-    opacity: 1;
+    cursor: pointer;
+
+    &:hover,
+    &.swiper-slide-active {
+      opacity: 1;
+    }
   }
 `;
 
 const HomeHeader = styled.div`
-  margin: 0 60px;
-  
+  width: calc((100vw - (100vw - 640px))/5);
+
   span {
+    font-family: 'Norwester';
     display: inline-block;
-    height: 48px;
-    line-height: 48px;
-    font-size: 16px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 20px;
   }
+
+  /* tablet */
+  ${({theme:{media}}) => media.tablet`
+  width: calc((100vw - (100vw - 640px))/3);
+    span {
+      height: 36px;
+      line-height: 36px;
+      font-size: 24px;
+    }
+  `}
+  
+  /* desktop */
+  ${({theme:{media}}) => media.desktop`
+    span {
+      height: 48px;
+      line-height: 48px;
+      font-size: 24px;
+    }
+  `}
+  
 `;
 
 const Body = styled(Swiper)`
@@ -59,9 +83,10 @@ const Body = styled(Swiper)`
     width: 100%;
     height: 100%;
   }
-  .swiper-slide {
-    padding: 5px 10px;
-  }
+
+  ${({theme: {media}}) => media.tablet`
+  
+  ` }
 `;
 
 const Home = ({ ...props }) => {
@@ -73,22 +98,23 @@ const Home = ({ ...props }) => {
   const changeTabIndex = () => {
     switch (pathname) {
       case '/':
-        return 0;
-      case '/project':
         return 1;
+      case '/project':
+        return 0;
       case '/toy':
         return 2;
       default:
-        return 0;
+        return 1;
     }
   }
+
   const onSlideChange = ({ realIndex }: any) => {
     switch (realIndex) {
       case 0:
-        navigate('/')
+        navigate('/project')
         break;
       case 1:
-        navigate('/project')
+        navigate('/')
         break;
       case 2:
         navigate('/toy')
@@ -97,20 +123,20 @@ const Home = ({ ...props }) => {
         break;
     }
   }
+
   const onClick: ReactEventHandler = (e) => {
     let index: number | undefined;
-
     headerSwiper?.slides.filter((item, itemIndex) => {
       if (item === e.currentTarget) {
         index = itemIndex;
         return item
       }
     });
-
-    
-    if (index) {
+    if(typeof index === 'number')  {
       headerSwiper?.slideTo(index);
     }
+    
+    
 
     return
   }
@@ -130,10 +156,10 @@ const Home = ({ ...props }) => {
           threshold={10}
           centeredSlides={true}
         >
-          <SwiperSlide onClick={onClick}>
+           <SwiperSlide onClick={onClick}>
             <HomeHeader>
               <span>
-                프로필
+                Project
               </span>
             </HomeHeader>
 
@@ -141,15 +167,16 @@ const Home = ({ ...props }) => {
           <SwiperSlide onClick={onClick}>
             <HomeHeader>
               <span>
-                프로젝트
+                Profile
               </span>
             </HomeHeader>
 
           </SwiperSlide>
+         
           <SwiperSlide onClick={onClick}>
             <HomeHeader>
               <span>
-                토이프로젝트
+                Toy Project
               </span>
             </HomeHeader>
 
@@ -169,17 +196,18 @@ const Home = ({ ...props }) => {
         <SwiperSlide>
           <BodyContainer>
             <ScrollContainer>
-            <Profile />
+            <Project />
             </ScrollContainer>
           </BodyContainer>
         </SwiperSlide>
         <SwiperSlide>
           <BodyContainer>
             <ScrollContainer>
-            <Project />
+            <Profile />
             </ScrollContainer>
           </BodyContainer>
         </SwiperSlide>
+     
         <SwiperSlide>
           <BodyContainer>
             <ScrollContainer>

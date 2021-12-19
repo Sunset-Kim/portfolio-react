@@ -2,8 +2,8 @@ import React,{useEffect, useState} from 'react'
 import styled from 'styled-components'
 import toyData from '../data/toyData';
 import Poster from '../components/Toy/Poster';
-import TabContainer from '../components/TabContainer';
-import { keyword, project } from '../data/projectData';
+import TabContainer from '../components/Toy/TabContainer';
+import { keyword } from '../data/projectData';
 import Loader from '../components/Common/Loader';
 
 const Container = styled.div`
@@ -13,8 +13,35 @@ flex-wrap: wrap;
 `;
 
 const Dimension = styled.div`
-width: calc(100% / 3);
-border: 1px solid black;
+width: calc(100% / 2);
+border-color: ${props => props.theme.color.foreground};
+border-right: 1px solid;
+border-bottom: 1px solid;
+
+&:nth-child(2n + 1) {
+  border-left: 1px solid;
+}
+&:nth-child(1), &:nth-child(2) {
+  border-top: 1px solid;
+}
+
+/* md */
+${({theme: {media, color}}) => media.tablet`
+  width: calc(100% / 3);
+  &:nth-child(2n + 1) {
+  border-left: none;
+  }
+  &:nth-child(1), &:nth-child(2) {
+    border-top: none;
+  }
+
+  &:nth-child(3n + 1) {
+    border-left: 1px solid;
+  }
+  &:nth-child(1), &:nth-child(2), &:nth-child(3) {
+    border-top: 1px solid;
+  }
+`}
 `;
 
 const ToyProject:React.FC= ({}) => {
@@ -50,9 +77,11 @@ const ToyProject:React.FC= ({}) => {
     <>
     {<TabContainer onChange={onChange} />}
     {
-      loading ? <Loader /> :
+      
       <Container>
+
       {
+        loading ? <Loader /> :
         Data &&
         Data.length > 0 &&
         Data.map(item =>

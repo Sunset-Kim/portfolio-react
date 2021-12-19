@@ -11,7 +11,7 @@ padding: 8px 24px;
 font-size: 14px;
 text-decoration: none;
 border-radius: 100px;
-background-color: ${props => props.bgColor ?? props.theme.color.backgorund};
+background-color: ${props => props.bgColor ?? props.theme.color.background};
 color: ${props => props.textColor ?? props.theme.color.text1};
 border: 1px solid ${props => props.theme.color.foreground};
 `

@@ -9,7 +9,7 @@ const Container = styled.div`
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: ${props => props.theme.color.backgorund};
+  background-color: ${props => props.theme.color.background};
   display: flex;
   justify-content: center;
 `;

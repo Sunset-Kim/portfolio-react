@@ -2,14 +2,20 @@ import React from 'react'
 import styled from "styled-components";
 
 
-const Container = styled.div<{mb: number}>`
-  margin-bottom: ${props => props.mb}px;
+const Container = styled.div`
 `;
+
 const Title = styled.h3`
 font-family: 'Norwester','Roboto';
 margin: 0;
 margin-bottom: 10px;
-font-size: 18px;
+font-size: 16px;
+letter-spacing: 0.05em;
+
+/* md */
+${({theme: {media}}) => media.tablet`
+  font-size: 20px;
+`}
 `;
 
 const Contents = styled.div`
@@ -20,12 +26,12 @@ white-space: pre-wrap;
 
 interface DialogProps {
   title?: string,
-  mb?: number
+  
 }
 
-const Dialog:React.FC<DialogProps> = ({title,mb = 10, children}) => {
+const Dialog:React.FC<DialogProps> = ({title, children}) => {
   return (
-    <Container mb={mb}>
+    <Container>
       {
         title &&
         <Title>{title}</Title>

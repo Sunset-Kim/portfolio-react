@@ -3,9 +3,13 @@ import styled from "styled-components";
 import ToggleSwitch from './ToggleSwitch';
 
 const Container = styled.div`
-position: relative;
+display: flex;
+justify-content: flex-end;
+align-items: center;
+
+max-width: 640px;
+padding: 0 10px;
 height: 36px;
-width: 640px;
 margin: 0 auto;
 `;
 
@@ -21,9 +25,7 @@ const CommonHeader:React.FC<CommonHeaderProps> = ({onChangeTheme}) => {
 
   return (
     <Container>
-    <div>
       <ToggleSwitch onClick={onClick} />
-    </div>    
     </Container>
   )
 }

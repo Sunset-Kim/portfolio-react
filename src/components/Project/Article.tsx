@@ -7,8 +7,13 @@ import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
 const ProjectContainer = styled.div`
 position: relative;
-padding-top: 75%;
+padding-top: 100%;
 border-bottom: ${props => `1px solid ${props.theme.color.foreground}`};
+
+/* md */
+${({theme: {media}}) => media.tablet`
+  padding-top: 70%;
+`}
 `;
 
 const ProjectContents = styled.div`
@@ -19,29 +24,46 @@ left: 0;
 top: 0;
 display: flex;
 justify-content: space-between;
-padding: 25px 0;
+padding: 15px 0;
+
+/* md */
+${({theme: {media}}) => media.tablet`
+  padding: 25px 0;
+`}
 `;
 
 const Info = styled.div`
-margin-right: 32px;
+margin-right: 16px;
 flex: 1;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
+
+/* md */
+${({theme: {media}}) => media.tablet`
+margin-right: 32px;
+`}
 `;
 
 const Header = styled.div``;
 
 const Title = styled.h2`
-font-size: 28px;
-line-height: 38px;
+font-size: 16px;
+line-height: 24px;
 margin: 0;
 font-weight: 600;
+margin-bottom: 1em;
+
+/* md */
+${({theme: {media}}) => media.tablet`
+font-size: 28px;
+line-height: 38px;
 margin-bottom: 0.5em;
+`}
 `;
 
 const SubTitle = styled.h5`
-font-size: 14px;
+font-size: 13px;
 line-height: 18px;
 font-weight: 600;
 margin: 0;
@@ -56,21 +78,34 @@ span {
   &::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: -5%;
+    bottom: -0.05em;
+    left: 0;
     border-radius: 10px;
     z-index: -1;
     background-color: ${props => props.theme.color.primary};
-    opacity: 0.55;
-    width: 110%;
-    height: 0.5em;
+    opacity: 0.35;
+    width: 100%;
+    height: 0.3em;
   }
 }
+
+/* md */
+${({theme: {media}}) => media.tablet`
+font-size: 14px;
+line-height: 18px;
+margin-bottom: 1em;
+`}
 `;
 
 const Desc = styled.p`
+font-size: 13px;
+line-height: 22px;
+margin-top: 0;
+
+${({theme: {media}}) => media.tablet`
 font-size: 15px;
 line-height: 24px;
+`}
 `;
 
 const LinkContainer = styled(Dialog)`
@@ -132,7 +167,7 @@ const Article: React.FC<ArticleProps> = ({ id,title, subtitle, desc, thumbnail, 
           </Header>
           {
             url &&
-            <LinkContainer title='Links' mb={0}>
+            <LinkContainer title='Links'>
               {url.map(link => <LinkButton key={id + link} url={link} >
                 <FontAwesomeIcon icon={faPaperPlane} />
               </LinkButton>

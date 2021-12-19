@@ -11,16 +11,13 @@ display: inline-block;
 width: 14px;
 height: 14px;
 border-radius: 50%;
-background-color: ${props => props.theme.color.backgorund};
+background-color: ${props => props.theme.color.background};
 transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 `;
 
 
 const Button = styled.button<{isOn: boolean}>`
-position: absolute;
-right: 0;
-top: 50%;
-transform: translateY(-50%);
+position: relative;
 width: 36px;
 height: 20px;
 border-radius: 100px;

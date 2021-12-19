@@ -12,7 +12,7 @@ const Link = styled.a<{size?:number}>`
   margin-bottom: 5px;
   border-radius: 50%;
   text-decoration: none;
-  color: ${props => props.theme.color.backgorund};
+  color: ${props => props.theme.color.background};
   background: ${props => props.theme.color.foreground};
   transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
 

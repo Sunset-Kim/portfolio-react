@@ -2,36 +2,57 @@ import React from 'react'
 import styled, { useTheme } from 'styled-components'
 import Dialog from '../components/Dialog';
 import {Keywords, SkillBadge} from '../components/Badges'
-import { GithubBadge,MailBadge,BlogBadge } from '../components/Badges';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faGithub} from "@fortawesome/free-brands-svg-icons"
+import {faBlog, faEnvelope} from "@fortawesome/free-solid-svg-icons"
+import LinkButton from '../components/LinkButton';
 
 // header
 const Title = styled.h1`
 font-family: 'Roboto';
-font-size: 16px;
+font-size: 13px;
 margin: 0;
+margin-bottom: 1em;
+
+/* md */
+${({theme: {media}}) => media.tablet`
+  font-size: 16px;
+`}
+
 `;
 
 const SubTitle = styled.h2`
 font-family: 'Norwester';
-font-size: 60px;
+font-size: ${({theme}) => theme.fontsize[32]};
 margin: 0;
-margin-bottom: 20px;
-`;
+margin-bottom: ${({theme}) => theme.margin[16]};
 
-const DialogContainer = styled(Dialog)`
-margin-bottom: 50px;
+${({theme: {media, margin}}) => media.tablet`
+  font-size: 48px;
+  margin-bottom: 32px;
+`}
 `;
 
 // info
 const Section = styled.section`
 display: flex;
-padding: 24px 0;
+flex-direction: column;
+padding: 8px 0;
+
+${({theme: {media}}) => media.tablet`
+  flex-direction: row;
+  padding: 24px 0;
+`}
+
 `;
 
 const Left = styled.div`
 flex-direction: column;
-flex: 1;
-margin-right: 24px;
+flex: 1 1;
+
+${({theme: {media}}) => media.tablet`
+  margin-right: 24px;
+`}
 `;
 
 const Right  = styled.div`
@@ -40,17 +61,33 @@ flex: 1 1;
 margin: 0 auto;
 `;
 
+
+const DialogChild = styled.div`
+margin-bottom: ${({theme}) => theme.margin[16]};
+
+  ${({theme: {media}}) => media.tablet`
+    margin-bottom: 24px;
+  `}
+`;
+
 const ImageContainer = styled.div`
 width: 100%;
 height: 100%;
 border-radius: 5px;
 overflow: hidden;
+margin-top: ${({theme}) => theme.margin[16]};;
+
 img {
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
+
+  ${({theme: {media}}) => media.tablet`
+    margin-top: 0;
+  `}
 `;
+
 
 const SkillContainer = styled.div`
 display: flex;
@@ -63,9 +100,6 @@ span {
   margin: 5px;
 }
 `;
-
-
-
 
 const Profile = () => {
   const theme = useTheme();
@@ -82,15 +116,23 @@ const Profile = () => {
             About
           </SubTitle>
 
-          <DialogContainer title='Greeting' mb={20}>
-            {`안녕하세요.\n프론트엔드 개발자 김민우입니다.\n적당한 고난과 역경은 감사합니다`}
-          </DialogContainer>
+          <Dialog title='Greeting' >
+            <DialogChild>
+              {`안녕하세요.\n프론트엔드 개발자 김민우입니다.\n해당 사이트는 React 반응형 웹으로 제작되었으며 chrome, safari에 최적화 되었습니다`}
+            </DialogChild>
+          </Dialog>
           
-          <DialogContainer title='Contact Me' mb={20}>
-            <GithubBadge url='#none' />
-            <BlogBadge url="#none" />
-            <MailBadge url="#none" />
-          </DialogContainer>
+          <Dialog title='Contact Me'>
+            <LinkButton url='#none' size={35} >
+              <FontAwesomeIcon icon={faGithub} size='lg'/>
+            </LinkButton>
+            <LinkButton url='#none' size={35} >
+              <FontAwesomeIcon icon={faEnvelope} size='lg'/>
+            </LinkButton>
+            <LinkButton url='#none' size={35} >
+              <FontAwesomeIcon icon={faBlog} size='lg'/>
+            </LinkButton>
+          </Dialog>
         </Left>
         <Right>
           <ImageContainer>
@@ -110,7 +152,7 @@ const Profile = () => {
           <SkillContainer>
           {
               ['html', 'css', 'jquery', 'javascript', 'typescript', 'react', 'react-native']
-              .map(item => <SkillBadge key={item} type={item as Keywords} bgColor={theme.color.backgorund} />)
+              .map(item => <SkillBadge key={item} type={item as Keywords} bgColor={theme.color.background} />)
             }
           </SkillContainer>
             
