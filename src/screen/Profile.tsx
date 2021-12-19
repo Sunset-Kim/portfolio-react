@@ -109,7 +109,7 @@ const Profile = () => {
       <Section>
         <Left>
           <Title>
-            Frontend Delveloper Portpolio
+            Frontend Delveloper Portfolio
           </Title>
 
           <SubTitle>
