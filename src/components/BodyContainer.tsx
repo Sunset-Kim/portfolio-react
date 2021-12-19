@@ -6,6 +6,7 @@ position: relative;
 display: flex;
 flex-direction: column;
 height: 100%;
+overflow: hidden;
 max-width: 640px;
 padding: 0 10px;
 margin: 0 auto;
