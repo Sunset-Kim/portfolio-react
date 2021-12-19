@@ -11,13 +11,25 @@ import BodyContainer from '../components/BodyContainer';
 import Profile from './Profile';
 import ToyProject from './ToyProject';
 import Project from './Project';
-import TabContainer from '../components/TabContainer';
+import ScrollContainer from '../components/ScrollContainer';
+import CommonHeader from '../components/Common/CommonHeader';
 
-const Header = styled.div``;
+
+const App = styled.div`
+height: 100%;
+`;
+
+const Header = styled.div`
+position: fixed;
+width: 100%;
+top: 0;
+z-index: 100;
+`;
 
 const HeaderSlide = styled(Swiper)`
   position: relative;
   max-width: 640px;
+  
   .swiper-slide {
     width: auto;
     text-align: center;
@@ -26,46 +38,34 @@ const HeaderSlide = styled(Swiper)`
   .swiper-slide-active {
     opacity: 1;
   }
-  &::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: 1;
-    background: linear-gradient(-90deg, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 100%);
-    height: 100%;
-    width: 60px;
-  }
-  &::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 2;
-    background: linear-gradient(90deg, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 100%);;
-    height: 100%;
-    width: 60px;
-  }
 `;
+
 const HomeHeader = styled.div`
-margin: 0 60px;
+  margin: 0 60px;
+  
   span {
     display: inline-block;
-    padding: 24px 0;
+    height: 48px;
+    line-height: 48px;
     font-size: 16px;
   }
 `;
+
 const Body = styled(Swiper)`
-  background: black;
+  padding-top: 84px;
+  height: 100%;
+  
+  .swiper-wrapper {
+    width: 100%;
+    height: 100%;
+  }
   .swiper-slide {
     padding: 5px 10px;
-    color: white;
   }
 `;
 
 const Home = ({ ...props }) => {
   const { pathname } = useLocation();
-  const [currentTab, setCurrentTab] = useState(0);
   const [headerSwiper, setHeaderSwiper] = useState<SwiperCore>();
   const [bodySwiper, setBodySwiper] = useState<SwiperCore>();
   const navigate = useNavigate();
@@ -99,6 +99,7 @@ const Home = ({ ...props }) => {
   }
   const onClick: ReactEventHandler = (e) => {
     let index: number | undefined;
+
     headerSwiper?.slides.filter((item, itemIndex) => {
       if (item === e.currentTarget) {
         index = itemIndex;
@@ -106,6 +107,7 @@ const Home = ({ ...props }) => {
       }
     });
 
+    
     if (index) {
       headerSwiper?.slideTo(index);
     }
@@ -114,19 +116,19 @@ const Home = ({ ...props }) => {
   }
 
   return (
-    <>
+    <App>
       <Header>
+        <CommonHeader onChangeTheme={props.onChangeTheme} />
         <HeaderSlide
           initialSlide={changeTabIndex()}
           modules={[Controller]}
           onSwiper={setHeaderSwiper}
           controller={{ control: bodySwiper }}
-          slidesPerView={3}
+          slidesPerView={'auto'}
           onSlideChange={onSlideChange}
           watchSlidesProgress={true}
-          centeredSlides={true}
           threshold={10}
-        // loop={true}
+          centeredSlides={true}
         >
           <SwiperSlide onClick={onClick}>
             <HomeHeader>
@@ -159,28 +161,34 @@ const Home = ({ ...props }) => {
         modules={[Controller]}
         onSwiper={setBodySwiper}
         controller={{ control: headerSwiper }}
-        slidesPerView={'auto'}
+        slidesPerView={'auto'}  
         watchSlidesProgress={true}
         centeredSlides={true}
-      // loop={true}
+        threshold={10}
       >
         <SwiperSlide>
           <BodyContainer>
+            <ScrollContainer>
             <Profile />
+            </ScrollContainer>
           </BodyContainer>
         </SwiperSlide>
         <SwiperSlide>
           <BodyContainer>
+            <ScrollContainer>
             <Project />
+            </ScrollContainer>
           </BodyContainer>
         </SwiperSlide>
         <SwiperSlide>
           <BodyContainer>
-            <ToyProject />
+            <ScrollContainer>
+              <ToyProject/>
+            </ScrollContainer>
           </BodyContainer>
         </SwiperSlide >
       </Body >
-    </ >
+    </App>
   );
 }
 

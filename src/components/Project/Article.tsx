@@ -8,6 +8,7 @@ import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 const ProjectContainer = styled.div`
 position: relative;
 padding-top: 75%;
+border-bottom: ${props => `1px solid ${props.theme.color.foreground}`};
 `;
 
 const ProjectContents = styled.div`
@@ -24,7 +25,6 @@ padding: 25px 0;
 const Info = styled.div`
 margin-right: 32px;
 flex: 1;
-height: 400px;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
@@ -43,13 +43,28 @@ margin-bottom: 0.5em;
 const SubTitle = styled.h5`
 font-size: 14px;
 line-height: 18px;
-font-weight: 400;
+font-weight: 600;
 margin: 0;
 margin-bottom: 1em;
 
 span {
   display: block;
-  margin-bottom: 0;
+  width: fit-content;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 0.1em;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -5%;
+    border-radius: 10px;
+    z-index: -1;
+    background-color: ${props => props.theme.color.primary};
+    opacity: 0.55;
+    width: 110%;
+    height: 0.5em;
+  }
 }
 `;
 
@@ -83,6 +98,7 @@ const VideoContainer = styled(Img)`
 `;
 
 interface ArticleProps {
+  id: number
   title: string
   subtitle?: string
   desc: string
@@ -92,8 +108,7 @@ interface ArticleProps {
   video?: string
 }
 
-const Article: React.FC<ArticleProps> = ({ title, subtitle, desc, thumbnail, keywords,url, video }) => {
-  
+const Article: React.FC<ArticleProps> = ({ id,title, subtitle, desc, thumbnail, keywords,url, video }) => {
 
   return (
     <ProjectContainer>
@@ -103,7 +118,7 @@ const Article: React.FC<ArticleProps> = ({ title, subtitle, desc, thumbnail, key
           {
             subtitle &&
             <SubTitle>
-              {subtitle.split(' ').map(item => <span>{item}</span>)}
+              {subtitle.split(' ').map((item,index) => <span key={id + item}>{item}</span>)}
             </SubTitle>
           }
           <Title>
@@ -118,7 +133,7 @@ const Article: React.FC<ArticleProps> = ({ title, subtitle, desc, thumbnail, key
           {
             url &&
             <LinkContainer title='Links' mb={0}>
-              {url.map(link => <LinkButton url={link} >
+              {url.map(link => <LinkButton key={id + link} url={link} >
                 <FontAwesomeIcon icon={faPaperPlane} />
               </LinkButton>
               )}
@@ -139,7 +154,7 @@ const Article: React.FC<ArticleProps> = ({ title, subtitle, desc, thumbnail, key
               <video src={video} autoPlay muted loop/>
             </VideoContainer>
           }
-       
+
       </ProjectContents>
     </ProjectContainer>
   )
