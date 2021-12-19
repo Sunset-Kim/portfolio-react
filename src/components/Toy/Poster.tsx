@@ -188,7 +188,7 @@ const Poster:React.FC<project> = ({...props}) => {
       {
           props.video &&
           <VideoContainer>
-            <video src={props.video} autoPlay muted loop/>
+            <video src={props.video} autoPlay muted loop playsInline/>
           </VideoContainer>
           
         }

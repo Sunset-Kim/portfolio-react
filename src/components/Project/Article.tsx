@@ -186,7 +186,7 @@ const Article: React.FC<ArticleProps> = ({ id,title, subtitle, desc, thumbnail, 
           {
             video && 
             <VideoContainer>
-              <video src={video} autoPlay muted loop/>
+              <video src={video} autoPlay muted loop playsInline/>
             </VideoContainer>
           }
 
