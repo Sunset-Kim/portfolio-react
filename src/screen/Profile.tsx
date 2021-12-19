@@ -136,7 +136,7 @@ const Profile = () => {
         </Left>
         <Right>
           <ImageContainer>
-            <img src="/images/profile_img.jpg" alt="profile" />
+            <img src="/images/profile.jpeg" alt="profile" />
           </ImageContainer>
         </Right>
 
