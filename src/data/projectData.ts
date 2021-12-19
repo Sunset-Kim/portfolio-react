@@ -46,7 +46,6 @@ const projectData: project[] = [
       "https://campaign.happybean.naver.com/campaign/give/2021withibk",
       "https://campaign.happybean.naver.com/campaign/give/2021pampersclub",
       "https://happybean.naver.com/campaign/kcgp",
-      "https://happybean.naver.com/campaign/etechhive",
     ],
     keywords: ['html', 'jquery', 'sass']
   },

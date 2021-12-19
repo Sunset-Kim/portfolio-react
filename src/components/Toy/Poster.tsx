@@ -102,7 +102,7 @@ const Poster:React.FC<project> = ({...props}) => {
             <Title>{props.title}</Title>
             <Desc>{props.desc}</Desc>
             <KeywordsContainer>
-              {props.keywords.map(item => <span>{item}</span>)}
+              {props.keywords.map(item => <span key={props.id + item}>{item}</span>)}
             </KeywordsContainer>
         </Header>
         
@@ -118,7 +118,7 @@ const Poster:React.FC<project> = ({...props}) => {
         {
           // project links
           props.url.length > 0 &&
-          props.url.map(item => <LinkButton key={item} url={item} size={30} >
+          props.url.map(item => <LinkButton key={props.id + item} url={item} size={30} >
           <FontAwesomeIcon icon={faPaperPlane} size='1x'/>
           </LinkButton>)
         }
