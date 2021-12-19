@@ -16,11 +16,13 @@ border: 1px solid black;
 `;
 
 
-const ToyProject = () => {
-  const [category, setCategory] = useState('')
+
+const ToyProject:React.FC= ({}) => {
+  const [category, setCategory] = useState('전체')
+  
   const onChange = (query: string) => {
-    setCategory(query);
-  }
+    setCategory(query);   
+  } 
 
   const Data = toyData.map(data => {
     const query = category.toLowerCase();
@@ -31,13 +33,8 @@ const ToyProject = () => {
       if(result) return data 
     }
   })
-  .filter(item => item !== undefined);
-  console.log(Data)
+  .filter(item => item !== undefined); 
 
-  
-  useEffect(() => {
-    
-  }, [Data])
 
 
 
@@ -49,8 +46,8 @@ const ToyProject = () => {
         Data.length > 0 &&
         Data.map(item =>
         item &&  
-        <Dimension>
-          <Poster key={item.id} {...item}/>
+        <Dimension key={item.id}>
+          <Poster  {...item}/>
         </Dimension>)
       }
     
