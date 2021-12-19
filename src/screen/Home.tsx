@@ -47,7 +47,7 @@ const HomeHeader = styled.div`
   width: calc((100vw - (100vw - 640px))/5);
 
   span {
-    font-family: 'Norwester, Roboto';
+    font-family: 'Norwester', 'Roboto';
     display: inline-block;
     height: 24px;
     line-height: 24px;

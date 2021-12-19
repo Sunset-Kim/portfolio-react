@@ -22,7 +22,7 @@ ${({theme: {media}}) => media.tablet`
 `;
 
 const SubTitle = styled.h2`
-font-family: 'Norwester, Roboto';
+font-family: 'Norwester', 'Roboto';
 font-size: ${({theme}) => theme.fontsize[32]};
 margin: 0;
 margin-bottom: ${({theme}) => theme.margin[16]};
