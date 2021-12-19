@@ -1,14 +1,18 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { BrowserRouter, Route, RouteProps, Routes } from "react-router-dom"
 import Home from "./screen/Home";
 
-const Router = () => {
+interface ThemeProps {
+  onChangeTheme: () => void
+}
+
+const Router:React.FC<RouteProps & ThemeProps> = ({onChangeTheme}) => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/project" element={<Home />} />
-        <Route path="/toy" element={<Home />} />
+        <Route path="/" element={<Home onChangeTheme={onChangeTheme}/>} />
+        <Route path="/project" element={<Home onChangeTheme={onChangeTheme}/>} />
+        <Route path="/toy" element={<Home onChangeTheme={onChangeTheme}/>} />
       </Routes>
     </BrowserRouter>
   )
