@@ -4,8 +4,10 @@ import toyData from '../data/toyData';
 import Poster from '../components/Toy/Poster';
 import TabContainer from '../components/TabContainer';
 import { keyword, project } from '../data/projectData';
+import Loader from '../components/Common/Loader';
 
 const Container = styled.div`
+position: relative;
 display: flex;
 flex-wrap: wrap;
 `;
@@ -15,14 +17,9 @@ width: calc(100% / 3);
 border: 1px solid black;
 `;
 
-
-
 const ToyProject:React.FC= ({}) => {
-  const [category, setCategory] = useState('전체')
-  
-  const onChange = (query: string) => {
-    setCategory(query);   
-  } 
+  const [category, setCategory] = useState('전체');
+  const [loading, setLoading] = useState(false);
 
   const Data = toyData.map(data => {
     const query = category.toLowerCase();
@@ -34,13 +31,27 @@ const ToyProject:React.FC= ({}) => {
     }
   })
   .filter(item => item !== undefined); 
+  
 
+  const onChange = (query: string) => {
+    setCategory(query);   
+  } 
 
+  useEffect(() => {
+    setLoading(true);
+    // ** after fetch Data
+    setTimeout(() => {
+      setLoading(false);
+    }, 500)
+  }, [category])
 
 
   return (
-    <Container>
-      {<TabContainer onChange={onChange} />}
+    <>
+    {<TabContainer onChange={onChange} />}
+    {
+      loading ? <Loader /> :
+      <Container>
       {
         Data &&
         Data.length > 0 &&
@@ -50,8 +61,10 @@ const ToyProject:React.FC= ({}) => {
           <Poster  {...item}/>
         </Dimension>)
       }
-    
     </Container>
+    }
+    
+    </>
   )
 }
 
