@@ -5,11 +5,13 @@ import Poster from '../components/Toy/Poster';
 import TabContainer from '../components/Toy/TabContainer';
 import { keyword } from '../data/projectData';
 import Loader from '../components/Common/Loader';
+import Callout from '../components/Callout';
 
 const Container = styled.div`
 position: relative;
 display: flex;
 flex-wrap: wrap;
+margin-top: 16px;
 `;
 
 const Dimension = styled.div`
@@ -48,7 +50,7 @@ const ToyProject:React.FC= ({}) => {
   const [category, setCategory] = useState('전체');
   const [loading, setLoading] = useState(false);
 
-  const Data = toyData.map(data => {
+  const Data = toyData.sort((a,b) => b.id - a.id).map(data => {
     const query = category.toLowerCase();
     if(query === '전체') {
       return data
@@ -76,6 +78,9 @@ const ToyProject:React.FC= ({}) => {
   return (
     <>
     {<TabContainer onChange={onChange} />}
+    <Callout>
+      학습목적으로 진행한 간단한 프로젝트입니다. 최신순으로 정렬되었습니다.
+    </Callout>
     {
       
       <Container>
