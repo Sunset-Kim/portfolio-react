@@ -118,18 +118,15 @@ const Profile = () => {
 
           <Dialog title='Greeting' >
             <DialogChild>
-              {`안녕하세요.\n프론트엔드 개발자 김민우입니다.\n해당 사이트는 React 반응형 웹으로 제작되었으며 chrome, safari에 최적화 되었습니다`}
+              {`안녕하세요.\n프론트엔드 개발자 김민우입니다.\n해당 사이트는 React를 사용한 반응형 웹으로 제작되었으며 chrome, safari에 최적화 되었습니다`}
             </DialogChild>
           </Dialog>
           
           <Dialog title='Contact Me'>
-            <LinkButton url='#none' size={35} >
+            <LinkButton url='https://github.com/sunset-kim' size={35} >
               <FontAwesomeIcon icon={faGithub} size='lg'/>
             </LinkButton>
-            <LinkButton url='#none' size={35} >
-              <FontAwesomeIcon icon={faEnvelope} size='lg'/>
-            </LinkButton>
-            <LinkButton url='#none' size={35} >
+            <LinkButton url='https://velog.io/@minu_624' size={35} >
               <FontAwesomeIcon icon={faBlog} size='lg'/>
             </LinkButton>
           </Dialog>
