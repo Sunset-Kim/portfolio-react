@@ -1,4 +1,15 @@
-export type keyword = 'react'|'react-native' | 'typescript' | 'javascript' | 'jquery' | 'html' | 'sass' | 'css';
+export type keyword =
+  | "React"
+  | "React-native"
+  | "typescript"
+  | "javascript"
+  | "jquery"
+  | "html"
+  | "sass"
+  | "css"
+  | "Recoil"
+  | "tailwind CSS"
+  | "React-Query";
 
 export interface project {
   id: number;
@@ -7,9 +18,9 @@ export interface project {
   desc: string;
   thumbnail?: string;
   url: string[];
-  github?: string
+  github?: string;
   keywords: keyword[];
-  video?: string
+  video?: string;
 }
 
 const projectData: project[] = [
@@ -20,7 +31,7 @@ const projectData: project[] = [
     desc: "고정형 admin페이지와 반응형 사용자페이지 개발 및 크로스브라우징 전체. 프론트단 전체 개발",
     thumbnail: "./images/project/ivi.png",
     url: ["https://www.ivisupport.or.kr"],
-    keywords: ['html', 'jquery', 'sass']
+    keywords: ["html", "jquery", "sass"],
   },
   {
     id: 20210618,
@@ -29,7 +40,7 @@ const projectData: project[] = [
     desc: "고정형 admin페이지와 반응형 사용자페이지 개발 및 크로스브라우징 전체. 프론트단 전체 개발",
     thumbnail: "./images/project/goodstore.png",
     url: ["https://선한영향력가게.com"],
-    keywords: ['html', 'jquery', 'sass']
+    keywords: ["html", "jquery", "sass"],
   },
   {
     id: 20210628,
@@ -47,7 +58,7 @@ const projectData: project[] = [
       "https://campaign.happybean.naver.com/campaign/give/2021pampersclub",
       "https://happybean.naver.com/campaign/kcgp",
     ],
-    keywords: ['html', 'jquery', 'sass']
+    keywords: ["html", "jquery", "sass"],
   },
   {
     id: 20210908,
@@ -56,7 +67,7 @@ const projectData: project[] = [
     desc: "세이브더칠드런 pc용 스크롤 애니메이션 페이지 제작, 템플릿 페이지 제작 및 코드설계",
     video: "./images/project/svc.mp4",
     url: ["https://happybean.naver.com/campaign/etechhive"],
-    keywords: ['html', 'javascript', 'sass']
+    keywords: ["html", "javascript", "sass"],
   },
   {
     id: 20210701,
@@ -65,8 +76,8 @@ const projectData: project[] = [
     desc: "유지보수, 레거시코드 정리, 크로스브라우징, 코드컨벤션, 스타일 모듈화 및 디자인 시스템 정리",
     thumbnail: "./images/project/basket.png",
     url: ["https://basket.fund/page/service/friends"],
-    keywords: ['html', 'sass', 'jquery']
+    keywords: ["html", "sass", "jquery"],
   },
 ];
 
-export default projectData 
+export default projectData;
