@@ -39,7 +39,7 @@ const toyData: project[] = [
   {
     id: 20210105,
     title: "아이패드 모션페이지 제작",
-    desc: "canvas와 vanila js를 사용해서 애플인터렉션을 구현했습니다",
+    desc: "canvas api, vanila js를 사용한 인터렉션 페이지",
     keywords: ["javascript", "css"],
     video: "./images/toy/jsinteraction.mp4",
     url: ["https://minwoobabu.cafe24.com/asset/13_project/index.html"],
@@ -75,7 +75,7 @@ const toyData: project[] = [
   {
     id: 20220120,
     title: "Chat",
-    desc: "React, Firebase, tailwind css 를 이용한 실시간 채팅 웹입니다. 사용자 만의 그림파일을 생성할 수 있습니다.",
+    desc: "React, Recoil, Firebase, tailwind css 를 이용한 실시간 채팅 웹입니다.",
     keywords: ["React", "typescript", "tailwind CSS"],
     video: "./images/toy/chat.mp4",
     url: ["https://sunset-kim.github.io/card-maker/"],
